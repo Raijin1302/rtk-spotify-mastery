@@ -6,10 +6,18 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import PlayPause from "./PlayPause";
 import { useGetTopChartsQuery } from "../features/services/shazamCore";
+import { setActiveSong, playPause } from "../features/player/playerSlice";
 import { useEffect, useRef } from "react";
 import { TopCharts } from "../pages";
 
-const TopChartCard = ({ song, index }) => {
+const TopChartCard = ({
+  song,
+  index,
+  isPlaying,
+  activeSong,
+  handlePauseClick,
+  handlePlayClick,
+}) => {
   return (
     <div
       className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 rounded-lg cursor-pointer mb-2"
@@ -31,6 +39,12 @@ const TopChartCard = ({ song, index }) => {
           </Link>
         </div>
       </div>
+      <PlayPause
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        handlePause={handlePauseClick}
+        handlePlay={handlePlayClick}
+      />
     </div>
   );
 };
@@ -49,13 +63,13 @@ const TopPlay = () => {
   const topPlays = data?.slice(0, 5);
 
   console.log(topPlays);
-  // const handlePauseClick = () => {
-  //   dispatch(playPause(false));
-  // };
-  // const handlePlayClick = () => {
-  //   dispatch(setActiveSong({ song, data, index }));
-  //   dispatch(playPause(true));
-  // };
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+  const handlePlayClick = (song, index) => {
+    dispatch(setActiveSong({ song, data, index }));
+    dispatch(playPause(true));
+  };
 
   return (
     <div
@@ -71,7 +85,15 @@ const TopPlay = () => {
         </div>
         <div className="mt-4 flex flex-col gap-1">
           {topPlays?.map((song, index) => (
-            <TopChartCard key={song?.key} song={song} index={index} />
+            <TopChartCard
+              key={song?.key}
+              song={song}
+              index={index}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              handlePauseClick={handlePauseClick}
+              handlePlayClick={() => handlePlayClick(song, index)}
+            />
           ))}
         </div>
       </div>
