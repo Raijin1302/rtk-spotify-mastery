@@ -11,7 +11,7 @@ const SongDetails = () => {
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };
-  const handlePlayClick = () => {
+  const handlePlayClick = (song, index) => {
     dispatch(setActiveSong({ song, relatedData, index }));
     dispatch(playPause(true));
   };
@@ -36,7 +36,7 @@ const SongDetails = () => {
   }
   return (
     <div className="flex flex-col">
-      <DetailsHeader trackData={trackData} />
+      <DetailsHeader artistId={id} trackData={trackData} />
       <div className="mb-10">
         <h2 className="text-white text-3xl font-bold">Lyrics :</h2>
         <div className="mt-5">
@@ -52,6 +52,7 @@ const SongDetails = () => {
         </div>
       </div>
       <RelatedSongs
+        artistId={id}
         relatedData={relatedData}
         isPlaying={isPlaying}
         activeSong={activeSong}
