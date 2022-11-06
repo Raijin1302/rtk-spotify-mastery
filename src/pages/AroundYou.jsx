@@ -16,11 +16,11 @@ const AroundYou = () => {
     }
   }, [country]);
 
-  if (isFetching) {
+  if (isFetching && loading) {
     return <Loader title="Searching chart details...." />;
   }
 
-  if (error) {
+  if (error && country) {
     return <Error />;
   }
   // useEffect(() => {
@@ -42,14 +42,14 @@ const AroundYou = () => {
       </h2>
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {data?.map((song, i) => (
+        {data?.map((song, index) => (
           <SongCard
             key={song.key}
             song={song}
             isPlaying={isPlaying}
             activeSong={activeSong}
             data={data}
-            i={i}
+            index={index}
           />
         ))}
       </div>
