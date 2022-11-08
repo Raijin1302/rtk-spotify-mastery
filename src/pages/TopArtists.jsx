@@ -1,15 +1,12 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Error, Loader, SongCard } from "../components";
+import React from "react";
+import { Error, Loader, ArtistCard } from "../components";
 import { useGetTopChartsQuery } from "../features/services/shazamCore";
 const TopCharts = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetTopChartsQuery();
-  console.log(data);
 
   if (isFetching) {
-    return <Loader title="Searching top charts details...." />;
+    return <Loader title="Searching top artists details...." />;
   }
 
   if (error) {
@@ -19,19 +16,12 @@ const TopCharts = () => {
   return (
     <div className="flex flex-col">
       <h2 className="font-bold text-3xl text-white text-left mt-4 mb-10">
-        Top Charts
+        Top Artists
       </h2>
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
         {data?.map((song, index) => (
-          <SongCard
-            key={song.key}
-            song={song}
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            data={data}
-            index={index}
-          />
+          <ArtistCard key={song.key} song={song} />
         ))}
       </div>
     </div>
