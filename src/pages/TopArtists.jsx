@@ -2,7 +2,6 @@ import React from "react";
 import { Error, Loader, ArtistCard } from "../components";
 import { useGetTopChartsQuery } from "../features/services/shazamCore";
 const TopCharts = () => {
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetTopChartsQuery();
 
   if (isFetching) {
