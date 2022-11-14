@@ -6,7 +6,6 @@ import { useGetTopChartsQuery } from "../features/services/shazamCore";
 const TopCharts = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetTopChartsQuery();
-  console.log(data);
 
   if (isFetching) {
     return <Loader title="Searching top charts details...." />;
