@@ -12,6 +12,7 @@ const Searchbar = () => {
   };
   return (
     <form
+      onSubmit={handleSubmit}
       autoComplete="off"
       className="p-2 text-gray-400 focus-within:text-gray-600"
     >
@@ -28,9 +29,7 @@ const Searchbar = () => {
           placeholder="Search"
           type="search"
           value={searchString}
-          onChange={(e) => {
-            setSearchString(e.target.value);
-          }}
+          onChange={(e) => setSearchString(e.target.value)}
         />
       </div>
     </form>

@@ -30,7 +30,7 @@ const App = () => {
               <Route path="/around-you" element={<AroundYou />} />
               <Route path="/artists/:artistId" element={<ArtistDetails />} />
               <Route path="/songs/:songId" element={<SongDetails />} />
-              <Route path="/search/:searchTerm" element={<Search />} />
+              <Route path="/search/:searchString" element={<Search />} />
             </Routes>
           </div>
           <div className="xl:sticky relative top-0 h-fit">
