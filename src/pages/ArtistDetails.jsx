@@ -10,7 +10,6 @@ const ArtistDetails = () => {
     isFetching,
     error,
   } = useGetArtistDetailQuery({ artistId });
-  console.log(artistData);
   if (isFetching) {
     return <Loader title="Searching artist details" />;
   }

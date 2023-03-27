@@ -8,7 +8,6 @@ const AroundYou = () => {
   const [loading, setLoading] = useState(true);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetChartByCountryQuery(country);
-  console.log(data);
 
   useEffect(() => {
     if (country) {
