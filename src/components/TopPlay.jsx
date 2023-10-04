@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { FreeMode } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import PlayPause from "./PlayPause";
-import { useGetTopChartsQuery } from "../features/services/shazamCore";
-import { setActiveSong, playPause } from "../features/player/playerSlice";
-import { useEffect, useRef } from "react";
-import { TopCharts } from "../pages";
+import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { FreeMode } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/free-mode"
+import PlayPause from "./PlayPause"
+import { useGetTopChartsQuery } from "../features/services/shazamCore"
+import { setActiveSong, playPause } from "../features/player/playerSlice"
+import { useEffect, useRef } from "react"
+import { TopCharts } from "../pages"
 
 const TopChartCard = ({
   song,
@@ -46,29 +46,29 @@ const TopChartCard = ({
         handlePlay={handlePlayClick}
       />
     </div>
-  );
-};
+  )
+}
 
 const TopPlay = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const { data } = useGetTopChartsQuery();
-  const divRef = useRef(null);
+  const { activeSong, isPlaying } = useSelector((state) => state.player)
+  const { data } = useGetTopChartsQuery()
+  const divRef = useRef(null)
 
   useEffect(() => {
-    divRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [dispatch]);
+    divRef.current.scrollIntoView({ behavior: "smooth" })
+  }, [dispatch])
 
-  const topPlays = data?.slice(0, 5);
+  const topPlays = data?.slice(0, 5)
 
   const handlePauseClick = () => {
-    dispatch(playPause(false));
-  };
+    dispatch(playPause(false))
+  }
   const handlePlayClick = (song, index) => {
-    dispatch(setActiveSong({ song, data, index }));
-    dispatch(playPause(true));
-  };
+    dispatch(setActiveSong({ song, data, index }))
+    dispatch(playPause(true))
+  }
 
   return (
     <div
@@ -130,7 +130,7 @@ const TopPlay = () => {
         </Swiper>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TopPlay;
+export default TopPlay
