@@ -1,26 +1,26 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Error, Loader, SongCard } from "../components";
-import { useGetChartByCountryQuery } from "../features/services/shazamCore";
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { Error, Loader, SongCard } from "../components"
+import { useGetChartByCountryQuery } from "../features/services/shazamCore"
 const AroundYou = () => {
-  const [country, setCountry] = useState("JP");
-  const [loading, setLoading] = useState(true);
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const { data, isFetching, error } = useGetChartByCountryQuery(country);
+  const [country, setCountry] = useState("JP")
+  const [loading, setLoading] = useState(true)
+  const { activeSong, isPlaying } = useSelector((state) => state.player)
+  const { data, isFetching, error } = useGetChartByCountryQuery(country)
 
   useEffect(() => {
     if (country) {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [country]);
+  }, [country])
 
   if (isFetching && loading) {
-    return <Loader title="Searching chart details...." />;
+    return <Loader title="Searching chart details...." />
   }
 
   if (error && country) {
-    return <Error />;
+    return <Error />
   }
   // useEffect(() => {
   //   axios
@@ -40,7 +40,7 @@ const AroundYou = () => {
         Around you <span className="font-black">{country}</span>
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+      <div className="flex flex-wrap sm:justify-start justify-center gap-4">
         {data?.map((song, index) => (
           <SongCard
             key={song.key}
@@ -53,7 +53,7 @@ const AroundYou = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AroundYou;
+export default AroundYou

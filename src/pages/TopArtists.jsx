@@ -1,15 +1,15 @@
-import React from "react";
-import { Error, Loader, ArtistCard } from "../components";
-import { useGetTopChartsQuery } from "../features/services/shazamCore";
+import React from "react"
+import { Error, Loader, ArtistCard } from "../components"
+import { useGetTopChartsQuery } from "../features/services/shazamCore"
 const TopCharts = () => {
-  const { data, isFetching, error } = useGetTopChartsQuery();
+  const { data, isFetching, error } = useGetTopChartsQuery()
 
   if (isFetching) {
-    return <Loader title="Searching top artists details...." />;
+    return <Loader title="Searching top artists details...." />
   }
 
   if (error) {
-    return <Error />;
+    return <Error />
   }
 
   return (
@@ -18,13 +18,13 @@ const TopCharts = () => {
         Top Artists
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+      <div className="flex flex-wrap sm:justify-start justify-center gap-4">
         {data?.map((song, index) => (
           <ArtistCard key={song.key} song={song} />
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TopCharts;
+export default TopCharts

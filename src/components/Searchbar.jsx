@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-import { FiSearch } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi"
 
 const Searchbar = () => {
-  const navigate = useNavigate();
-  const [searchString, setSearchString] = useState("");
+  const navigate = useNavigate()
+  const [searchString, setSearchString] = useState("")
   const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/search/${searchString}`);
-  };
+    e.preventDefault()
+    navigate(`/search/${searchString}`)
+  }
   return (
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="p-2 text-gray-400 focus-within:text-gray-600"
+      className="p-2 text-gray-500 focus-within:text-gray-600"
     >
       <label htmlFor="search-field" className="sr-only">
         Search all files
       </label>
-      <div className="flex flex-row justify-start items-center">
+      <div className="flex flex-row justify-start items-center hover:border-solid hover:border-2 hover:border-gray-400">
         <FiSearch aria-hidden="true" className="w-5 h-5 ml-4" />
         <input
           name="search-field"
@@ -33,7 +33,7 @@ const Searchbar = () => {
         />
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default Searchbar;
+export default Searchbar

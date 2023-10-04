@@ -1,18 +1,18 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Error, Loader, SongCard } from "../components";
-import { useGetTopChartsQuery } from "../features/services/shazamCore";
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { Error, Loader, SongCard } from "../components"
+import { useGetTopChartsQuery } from "../features/services/shazamCore"
 const TopCharts = () => {
-  const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const { data, isFetching, error } = useGetTopChartsQuery();
+  const { activeSong, isPlaying } = useSelector((state) => state.player)
+  const { data, isFetching, error } = useGetTopChartsQuery()
 
   if (isFetching) {
-    return <Loader title="Searching top charts details...." />;
+    return <Loader title="Searching top charts details...." />
   }
 
   if (error) {
-    return <Error />;
+    return <Error />
   }
 
   return (
@@ -21,7 +21,7 @@ const TopCharts = () => {
         Top Charts
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+      <div className="flex flex-wrap sm:justify-start justify-center gap-4">
         {data?.map((song, index) => (
           <SongCard
             key={song.key}
@@ -34,7 +34,7 @@ const TopCharts = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TopCharts;
+export default TopCharts

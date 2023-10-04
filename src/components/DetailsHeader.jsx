@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const DetailsHeader = ({ artistId, artistData, trackData }) => (
-  <div className="relative w-full flex flex-col">
+  <div className="relative w-full flex flex-col mx-auto">
     <div className="w-full bg-gradient-to-l from-transparent to-black sm:h-48 h-28" />
 
     <div className="absolute inset-0 flex items-center">
@@ -42,6 +42,6 @@ const DetailsHeader = ({ artistId, artistData, trackData }) => (
 
     <div className="w-full sm:h-44 h-24" />
   </div>
-);
+)
 
-export default DetailsHeader;
+export default DetailsHeader
